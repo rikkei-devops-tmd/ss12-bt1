@@ -1,15 +1,12 @@
 #!/bin/sh
 set -e
 
-if command -v gradle >/dev/null 2>&1; then
-    exec gradle "$@"
-fi
-
-APP_HOME=$(cd "$(dirname "$0")" && pwd)
 GRADLE_VERSION="8.7"
-GRADLE_DIR="$HOME/.gradle/wrapper/dists/gradle-$GRADLE_VERSION-bin"
+GRADLE_USER_HOME="${GRADLE_USER_HOME:-$HOME/.gradle}"
+GRADLE_DIR="$GRADLE_USER_HOME/wrapper/dists/gradle-$GRADLE_VERSION-bin"
+GRADLE_BIN="$GRADLE_DIR/gradle-$GRADLE_VERSION/bin/gradle"
 
-if [ ! -x "$GRADLE_DIR/gradle-$GRADLE_VERSION/bin/gradle" ]; then
+if [ ! -x "$GRADLE_BIN" ]; then
     mkdir -p "$GRADLE_DIR"
     TMP_ZIP="/tmp/gradle-$GRADLE_VERSION-bin.zip"
     if command -v curl >/dev/null 2>&1; then
@@ -17,14 +14,8 @@ if [ ! -x "$GRADLE_DIR/gradle-$GRADLE_VERSION/bin/gradle" ]; then
     elif command -v wget >/dev/null 2>&1; then
         wget -q "https://services.gradle.org/distributions/gradle-$GRADLE_VERSION-bin.zip" -O "$TMP_ZIP"
     fi
-    if [ -f "$TMP_ZIP" ]; then
-        unzip -q -o "$TMP_ZIP" -d "$GRADLE_DIR"
-        rm -f "$TMP_ZIP"
-    fi
+    unzip -q -o "$TMP_ZIP" -d "$GRADLE_DIR"
+    rm -f "$TMP_ZIP"
 fi
 
-if [ -x "$GRADLE_DIR/gradle-$GRADLE_VERSION/bin/gradle" ]; then
-    exec "$GRADLE_DIR/gradle-$GRADLE_VERSION/bin/gradle" "$@"
-fi
-
-exec gradle "$@"
+exec "$GRADLE_BIN" "$@"
