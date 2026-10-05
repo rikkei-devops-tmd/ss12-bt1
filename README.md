@@ -1,4 +1,4 @@
-BAI 1: KHOI TAO WORKFLOW CHAY UNIT TEST TU DONG CHO JAVA SPRING BOOT VOI GRADLE
+﻿BAI 1: KHOI TAO WORKFLOW CHAY UNIT TEST TU DONG CHO JAVA SPRING BOOT VOI GRADLE
 
 1. MUC TIEU VA BOI CANH
 Trong quy trinh phat trien phan mem hien dai (DevOps / CI-CD), viec tu dong hoa kiem thu (Automated Testing) giup phat hien som cac loi logic truoc khi ma nguon duoc hop nhat vao nhanh chinh. Bai tap nay thiet lap mot GitHub Actions Workflow tu dong kich hoat moi khi co su kien push len nhanh main, khoi tao moi truong Java 17 Temurin va thuc thi JUnit Tests thong qua Gradle Wrapper.
@@ -54,8 +54,9 @@ jobs:
 - Step Thuc thi JUnit Test: Thuc thi lenh ./gradlew test de bien dich ma nguon test va chay toan bo bo kiem thu JUnit 5. Ket qua kiem thu duoc tong hop va tra ve ma thoat (exit code 0 neu tat ca test deu vuot qua).
 
 5. HUONG DAN KIEM TRA VA XAC NHAN KET QUA
-- Day ma nguon len GitHub repository rikkei-devops-tmd/ss11-bt1.
+- Day ma nguon len GitHub repository rikkei-devops-tmd/ss12-bt1.
 - Truy cap tab Actions tren giao dien GitHub repository.
 - Quan sat workflow Java Spring Boot CI (Gradle) duoc kich hoat tu dong boi commit push.
 - Mo chi tiet Job Run Unit Tests va kiem tra log cua buoc Thuc thi JUnit Test voi Gradle.
 - Xac nhan trang thai cua Job hien thi tich xanh (Success), bao hieu toan bo quy trinh CI chay thanh cong hoan toan.
+
